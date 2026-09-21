@@ -2,8 +2,6 @@
 
 A sleek, ultra-responsive, high-performance personal developer portfolio website inspired by modern Bento and Neo-glassmorphism dark UI designs.
 
-![Portfolio Preview](./assets/images/profile.png)
-
 ---
 
 ## 🌟 Key Features
