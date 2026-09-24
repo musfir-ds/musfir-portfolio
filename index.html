@@ -55,15 +55,15 @@
   <div class="ambient-glow"></div>
 
   <!-- Main Responsive Container -->
-  <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 lg:py-10">
+  <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-6 lg:py-10 pb-28 lg:pb-10">
 
-    <div class="flex flex-col lg:flex-row gap-8 lg:gap-10 items-start">
+    <div class="flex flex-col lg:flex-row gap-6 lg:gap-10 items-start">
 
       <!-- ============================================== -->
       <!-- LEFT COLUMN: Sticky Profile Sidebar Card      -->
       <!-- ============================================== -->
       <aside class="w-full lg:w-80 xl:w-[330px] flex-shrink-0 sticky-sidebar">
-        <div id="sidebar" class="sidebar-container p-6 sm:p-7">
+        <div id="sidebar" class="sidebar-container p-5 sm:p-6 lg:p-7 relative">
           <div id="sidebar-content">
             <!-- Populated dynamically by app.js -->
           </div>
@@ -73,21 +73,21 @@
       <!-- ============================================== -->
       <!-- RIGHT COLUMN: Scrollable Main Content Stream  -->
       <!-- ============================================== -->
-      <main class="flex-1 w-full min-w-0 space-y-12 sm:space-y-14">
+      <main class="flex-1 w-full min-w-0 space-y-6 sm:space-y-8">
 
-        <!-- Top Floating Navigation Bar -->
-        <header class="flex justify-end items-center sticky top-4 z-40">
+        <!-- Top Floating Navigation Bar (Desktop Only) -->
+        <header class="hidden lg:flex justify-end items-center sticky top-4 z-40">
           <nav class="nav-pill px-5 py-2.5 rounded-full flex items-center gap-5 sm:gap-6 shadow-lg">
             <a href="#home" class="nav-link active">Home</a>
             <a href="#skills" class="nav-link">Skills</a>
             <a href="#education" class="nav-link">Education</a>
-            <a href="#awards" class="nav-link hidden sm:inline">Awards</a>
-            <a href="#certifications" class="nav-link hidden md:inline">Certifications</a>
+            <a href="#awards" class="nav-link">Awards</a>
+            <a href="#certifications" class="nav-link">Certifications</a>
             <a href="#contact" class="nav-link text-[var(--accent-amber)] font-semibold">Contact</a>
 
             <div class="h-4 w-[1px] bg-[var(--border-card)]"></div>
 
-            <!-- Theme Toggle Button -->
+            <!-- Theme Toggle Button (Desktop) -->
             <button id="theme-toggle"
               class="w-7 h-7 rounded-full flex items-center justify-center transition-transform hover:scale-110 focus:outline-none"
               title="Toggle Theme" aria-label="Toggle Light / Dark Mode">
@@ -98,90 +98,113 @@
           </nav>
         </header>
 
-        <!-- Hero Section -->
-        <section id="home" class="scroll-mt-24">
-          <div id="hero-content">
-            <!-- Populated dynamically by app.js -->
-          </div>
-        </section>
+        <!-- Main Card Container (Direct inspiration from reference mockup) -->
+        <div class="main-card-container p-6 sm:p-8 lg:p-9 space-y-12 sm:space-y-14">
 
-        <!-- Skills & Technologies Section -->
-        <section id="skills" class="scroll-mt-24">
-          <div class="flex items-center gap-3 mb-6">
-            <div
-              class="w-8 h-8 rounded-lg bg-[var(--icon-bg)] border border-[var(--icon-border)] flex items-center justify-center text-[var(--accent-amber)]">
-              <i data-lucide="code" class="w-4 h-4"></i>
+          <!-- Hero Section -->
+          <section id="home" class="scroll-mt-6 lg:scroll-mt-24">
+            <div id="hero-content">
+              <!-- Populated dynamically by app.js -->
             </div>
-            <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-[var(--text-primary)]">Skills & Technologies
-            </h2>
-          </div>
-          <div id="skills-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            <!-- Populated dynamically by app.js -->
-          </div>
-        </section>
+          </section>
 
-        <!-- Education Section -->
-        <section id="education" class="scroll-mt-24">
-          <div class="flex items-center gap-3 mb-6">
-            <div
-              class="w-8 h-8 rounded-lg bg-[var(--icon-bg)] border border-[var(--icon-border)] flex items-center justify-center text-[var(--accent-amber)]">
-              <i data-lucide="graduation-cap" class="w-4 h-4"></i>
+          <!-- Skills & Technologies Section -->
+          <section id="skills" class="scroll-mt-6 lg:scroll-mt-24">
+            <div class="flex items-center gap-3 mb-6">
+              <div class="section-header-icon">
+                <i data-lucide="code" class="w-4 h-4"></i>
+              </div>
+              <h2 class="text-xl sm:text-2xl lg:text-3xl font-bold tracking-tight text-[var(--text-primary)]">
+                Skills & Technologies
+              </h2>
             </div>
-            <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-[var(--text-primary)]">Education</h2>
-          </div>
-          <div id="education-content">
-            <!-- Populated dynamically by app.js -->
-          </div>
-        </section>
-
-        <!-- Awards And Recognition Section -->
-        <section id="awards" class="scroll-mt-24">
-          <div class="flex items-center gap-3 mb-6">
-            <div
-              class="w-8 h-8 rounded-lg bg-[var(--icon-bg)] border border-[var(--icon-border)] flex items-center justify-center text-[var(--accent-amber)]">
-              <i data-lucide="trophy" class="w-4 h-4"></i>
+            <div id="skills-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+              <!-- Populated dynamically by app.js -->
             </div>
-            <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-[var(--text-primary)]">Awards And Recognition
-            </h2>
-          </div>
-          <div id="awards-list" class="space-y-4">
-            <!-- Populated dynamically by app.js -->
-          </div>
-        </section>
+          </section>
 
-        <!-- Certifications Section -->
-        <section id="certifications" class="scroll-mt-24">
-          <div class="flex items-center gap-3 mb-6">
-            <div
-              class="w-8 h-8 rounded-lg bg-[var(--icon-bg)] border border-[var(--icon-border)] flex items-center justify-center text-[var(--accent-amber)]">
-              <i data-lucide="award" class="w-4 h-4"></i>
+          <!-- Education Section -->
+          <section id="education" class="scroll-mt-6 lg:scroll-mt-24">
+            <div class="flex items-center gap-3 mb-6">
+              <div class="section-header-icon">
+                <i data-lucide="graduation-cap" class="w-4 h-4"></i>
+              </div>
+              <h2 class="text-xl sm:text-2xl lg:text-3xl font-bold tracking-tight text-[var(--text-primary)]">Education</h2>
             </div>
-            <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-[var(--text-primary)]">Certifications</h2>
-          </div>
-          <div id="certifications-list" class="space-y-4">
-            <!-- Populated dynamically by app.js -->
-          </div>
-        </section>
+            <div id="education-content">
+              <!-- Populated dynamically by app.js -->
+            </div>
+          </section>
 
-        <!-- Contact Section (Inspired by reference mockup) -->
-        <section id="contact" class="scroll-mt-24">
-          <div id="contact-content">
-            <!-- Populated dynamically by app.js -->
-          </div>
-        </section>
+          <!-- Awards And Recognition Section -->
+          <section id="awards" class="scroll-mt-6 lg:scroll-mt-24">
+            <div class="flex items-center gap-3 mb-6">
+              <div class="section-header-icon">
+                <i data-lucide="trophy" class="w-4 h-4"></i>
+              </div>
+              <h2 class="text-xl sm:text-2xl lg:text-3xl font-bold tracking-tight text-[var(--text-primary)]">
+                Awards And Recognition
+              </h2>
+            </div>
+            <div id="awards-list" class="space-y-4">
+              <!-- Populated dynamically by app.js -->
+            </div>
+          </section>
 
-        <!-- Footer -->
-        <footer
-          class="pt-10 pb-16 border-t border-[var(--border-card)] flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[var(--text-muted)]">
-          <p>© 2026 Ashabul Yeamin Musfir. All rights reserved.</p>
-          <div class="flex items-center gap-4">
-            <a href="#home" class="hover:text-[var(--accent-amber)] transition-colors">Back to top ↑</a>
-          </div>
-        </footer>
+          <!-- Certifications Section -->
+          <section id="certifications" class="scroll-mt-6 lg:scroll-mt-24">
+            <div class="flex items-center gap-3 mb-6">
+              <div class="section-header-icon">
+                <i data-lucide="award" class="w-4 h-4"></i>
+              </div>
+              <h2 class="text-xl sm:text-2xl lg:text-3xl font-bold tracking-tight text-[var(--text-primary)]">Certifications</h2>
+            </div>
+            <div id="certifications-list" class="space-y-4">
+              <!-- Populated dynamically by app.js -->
+            </div>
+          </section>
+
+          <!-- Contact Section -->
+          <section id="contact" class="scroll-mt-6 lg:scroll-mt-24">
+            <div id="contact-content">
+              <!-- Populated dynamically by app.js -->
+            </div>
+          </section>
+
+          <!-- Footer -->
+          <footer
+            class="pt-8 border-t border-[var(--border-card)] flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[var(--text-muted)]">
+            <p>© 2026 Ashabul Yeamin Musfir. All rights reserved.</p>
+            <div class="flex items-center gap-4">
+              <a href="#home" class="hover:text-[var(--accent-amber)] transition-colors">Back to top ↑</a>
+            </div>
+          </footer>
+
+        </div>
 
       </main>
     </div>
   </div>
+
+  <!-- ============================================== -->
+  <!-- MOBILE BOTTOM FLOATING NAVIGATION BAR         -->
+  <!-- Directly inspired by reference screenshot      -->
+  <!-- ============================================== -->
+  <nav id="mobile-nav-bar" class="mobile-bottom-nav flex lg:hidden" aria-label="Mobile Navigation">
+    <div class="mobile-nav-links">
+      <a href="#home" class="mobile-nav-link active">Home</a>
+      <a href="#skills" class="mobile-nav-link">Skills</a>
+      <a href="#education" class="mobile-nav-link">Education</a>
+      <a href="#contact" class="mobile-nav-link">Contact</a>
+    </div>
+
+    <!-- Mobile Theme Toggle Button -->
+    <button id="mobile-theme-toggle" class="mobile-theme-btn" title="Toggle Theme" aria-label="Toggle Light / Dark Mode">
+      <div id="mobile-theme-icon-container">
+        <i data-lucide="moon" class="w-5 h-5 text-amber-400"></i>
+      </div>
+    </button>
+  </nav>
 
   <!-- ============================================== -->
   <!-- MODAL: Curriculum Vitae (CV) Viewer           -->

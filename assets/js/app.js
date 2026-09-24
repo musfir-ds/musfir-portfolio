@@ -40,31 +40,43 @@ document.addEventListener("DOMContentLoaded", () => {
 function initTheme() {
   const urlParams = new URLSearchParams(window.location.search);
   const themeParam = urlParams.get("theme");
-  const savedTheme = themeParam || localStorage.getItem("monmoy_theme") || "dark";
+  const savedTheme = themeParam || localStorage.getItem("musfir_theme") || "dark";
   document.documentElement.setAttribute("data-theme", savedTheme);
   updateThemeIcon(savedTheme);
 
-  const themeToggleBtn = document.getElementById("theme-toggle");
-  if (themeToggleBtn) {
-    themeToggleBtn.addEventListener("click", () => {
-      const currentTheme = document.documentElement.getAttribute("data-theme") || "dark";
-      const newTheme = currentTheme === "dark" ? "light" : "dark";
-      document.documentElement.setAttribute("data-theme", newTheme);
-      localStorage.setItem("monmoy_theme", newTheme);
-      updateThemeIcon(newTheme);
-    });
+  const desktopToggle = document.getElementById("theme-toggle");
+  if (desktopToggle) {
+    desktopToggle.addEventListener("click", toggleTheme);
+  }
+
+  const mobileToggle = document.getElementById("mobile-theme-toggle");
+  if (mobileToggle) {
+    mobileToggle.addEventListener("click", toggleTheme);
   }
 }
 
+function toggleTheme() {
+  const currentTheme = document.documentElement.getAttribute("data-theme") || "dark";
+  const newTheme = currentTheme === "dark" ? "light" : "dark";
+  document.documentElement.setAttribute("data-theme", newTheme);
+  localStorage.setItem("musfir_theme", newTheme);
+  updateThemeIcon(newTheme);
+}
+
 function updateThemeIcon(theme) {
-  const container = document.getElementById("theme-icon-container");
-  if (!container) return;
+  const containers = [
+    document.getElementById("theme-icon-container"),
+    document.getElementById("mobile-theme-icon-container")
+  ];
   
-  if (theme === "light") {
-    container.innerHTML = `<i data-lucide="sun" class="w-4 h-4 text-amber-500"></i>`;
-  } else {
-    container.innerHTML = `<i data-lucide="moon" class="w-4 h-4 text-amber-400"></i>`;
-  }
+  containers.forEach(container => {
+    if (!container) return;
+    if (theme === "light") {
+      container.innerHTML = `<i data-lucide="sun" class="w-4 h-4 sm:w-5 sm:h-5 text-amber-500"></i>`;
+    } else {
+      container.innerHTML = `<i data-lucide="moon" class="w-4 h-4 sm:w-5 sm:h-5 text-amber-400"></i>`;
+    }
+  });
   
   if (window.lucide) {
     window.lucide.createIcons();
@@ -72,7 +84,8 @@ function updateThemeIcon(theme) {
 }
 
 /**
- * Render Profile Sidebar
+ * Render Profile Sidebar (Inspired directly by the reference mockup)
+ * Features a collapsible details view on mobile with a golden corner toggle button.
  */
 function renderSidebar() {
   const p = portfolioData.personal;
@@ -80,9 +93,15 @@ function renderSidebar() {
   if (!container) return;
 
   container.innerHTML = `
-    <!-- Profile Card Header -->
-    <div class="flex flex-col items-center text-center">
-      <div class="relative w-28 h-28 sm:w-32 sm:h-32 mb-4">
+    <!-- Top-Right Golden-Corner Dropdown Button (Mobile Only) -->
+    <button id="profile-toggle-btn" class="profile-toggle-btn lg:hidden" aria-label="Toggle profile details" aria-expanded="false">
+      <i data-lucide="chevron-down" class="profile-toggle-chevron w-4 h-4"></i>
+    </button>
+
+    <!-- Header Row (Avatar + Name + Role Badge) -->
+    <div class="flex items-center lg:flex-col lg:text-center gap-4 lg:gap-0">
+      <!-- Profile Avatar -->
+      <div class="relative w-16 h-16 sm:w-20 sm:h-20 lg:w-28 lg:h-28 flex-shrink-0 lg:mb-4">
         <img 
           src="${p.avatar}" 
           alt="${p.name}" 
@@ -91,75 +110,91 @@ function renderSidebar() {
         />
       </div>
 
-      <h1 class="text-xl sm:text-2xl font-bold tracking-tight text-[var(--text-primary)]">
-        ${p.name}
-      </h1>
+      <!-- Profile Meta (Name & Role) -->
+      <div class="flex-1 min-w-0 pr-10 lg:pr-0">
+        <h1 class="text-lg sm:text-xl lg:text-2xl font-bold tracking-tight text-[var(--text-primary)] leading-tight truncate lg:overflow-visible lg:whitespace-normal">
+          ${p.name}
+        </h1>
 
-      <div class="mt-2 inline-flex items-center px-3.5 py-1 rounded-full text-xs font-medium bg-[var(--badge-bg)] text-[var(--badge-text)] border border-[var(--border-card)]">
-        ${p.role}
+        <div class="mt-1.5 lg:mt-2 inline-flex items-center px-3 py-0.5 rounded-full text-xs font-medium bg-[var(--badge-bg)] text-[var(--badge-text)] border border-[var(--border-card)]">
+          ${p.role}
+        </div>
       </div>
     </div>
 
-    <!-- Divider -->
-    <div class="my-6 border-t border-[var(--border-card)]"></div>
+    <!-- Collapsible Details Section (Expandable on Mobile, Always Open on Desktop) -->
+    <div id="profile-collapsible" class="profile-collapsible">
+      <!-- Top Divider -->
+      <div class="my-5 border-t border-[var(--border-card)]"></div>
 
-    <!-- Contact Info List -->
-    <div class="space-y-4 text-left">
-      <!-- Location -->
-      <a href="https://maps.google.com/?q=${encodeURIComponent(p.location)}" target="_blank" rel="noopener noreferrer" 
-         class="flex items-center gap-3.5 p-2 rounded-xl transition-colors hover:bg-[var(--icon-bg)] group">
-        <div class="info-icon-box group-hover:border-[var(--accent-amber)] transition-colors">
-          <i data-lucide="map-pin" class="w-4 h-4"></i>
-        </div>
-        <div>
-          <div class="text-[10px] font-bold tracking-wider uppercase text-[var(--text-muted)]">Location</div>
-          <div class="text-sm font-medium text-[var(--text-primary)] group-hover:text-[var(--accent-amber)] transition-colors">${p.location}</div>
-        </div>
-      </a>
-
-      <!-- Email -->
-      <a href="mailto:${p.email}" 
-         class="flex items-center gap-3.5 p-2 rounded-xl transition-colors hover:bg-[var(--icon-bg)] group">
-        <div class="info-icon-box group-hover:border-[var(--accent-amber)] transition-colors">
-          <i data-lucide="mail" class="w-4 h-4"></i>
-        </div>
-        <div class="overflow-hidden">
-          <div class="text-[10px] font-bold tracking-wider uppercase text-[var(--text-muted)]">Email</div>
-          <div class="text-sm font-medium text-[var(--text-primary)] truncate group-hover:text-[var(--accent-amber)] transition-colors" title="${p.email}">
-            ${p.email}
+      <!-- Contact Info List with Squircle Icon Containers -->
+      <div class="space-y-3 text-left">
+        <!-- Location -->
+        <a href="https://maps.google.com/?q=${encodeURIComponent(p.location)}" target="_blank" rel="noopener noreferrer" 
+           class="flex items-center gap-3.5 p-1.5 rounded-xl transition-colors hover:bg-[var(--icon-bg)] group">
+          <div class="info-icon-box group-hover:border-[var(--accent-amber)] transition-colors">
+            <i data-lucide="map-pin" class="w-4 h-4"></i>
           </div>
-        </div>
-      </a>
-
-      <!-- Phone -->
-      <a href="tel:${p.phone.replace(/\s+/g, '')}" 
-         class="flex items-center gap-3.5 p-2 rounded-xl transition-colors hover:bg-[var(--icon-bg)] group">
-        <div class="info-icon-box group-hover:border-[var(--accent-amber)] transition-colors">
-          <i data-lucide="phone" class="w-4 h-4"></i>
-        </div>
-        <div>
-          <div class="text-[10px] font-bold tracking-wider uppercase text-[var(--text-muted)]">Phone</div>
-          <div class="text-sm font-medium text-[var(--text-primary)] group-hover:text-[var(--accent-amber)] transition-colors">${p.phone}</div>
-        </div>
-      </a>
-    </div>
-
-    <!-- Divider -->
-    <div class="my-6 border-t border-[var(--border-card)]"></div>
-
-    <!-- Social Links with Crisp SVGs -->
-    <div class="flex items-center justify-center gap-3">
-      ${p.socials.map(s => `
-        <a href="${s.url}" target="_blank" rel="noopener noreferrer" class="social-btn text-[var(--text-secondary)] hover:text-[var(--accent-amber)]" title="${s.name}" aria-label="${s.name}">
-          ${SVG_ICONS[s.icon] || '<i data-lucide="globe" class="w-4 h-4"></i>'}
+          <div>
+            <div class="text-[10px] font-bold tracking-wider uppercase text-[var(--text-muted)]">Location</div>
+            <div class="text-sm font-medium text-[var(--text-primary)] group-hover:text-[var(--accent-amber)] transition-colors">${p.location}</div>
+          </div>
         </a>
-      `).join('')}
+
+        <!-- Email -->
+        <a href="mailto:${p.email}" 
+           class="flex items-center gap-3.5 p-1.5 rounded-xl transition-colors hover:bg-[var(--icon-bg)] group">
+          <div class="info-icon-box group-hover:border-[var(--accent-amber)] transition-colors">
+            <i data-lucide="mail" class="w-4 h-4"></i>
+          </div>
+          <div class="overflow-hidden">
+            <div class="text-[10px] font-bold tracking-wider uppercase text-[var(--text-muted)]">Email</div>
+            <div class="text-sm font-medium text-[var(--text-primary)] truncate group-hover:text-[var(--accent-amber)] transition-colors" title="${p.email}">
+              ${p.email}
+            </div>
+          </div>
+        </a>
+
+        <!-- Phone -->
+        <a href="tel:${p.phone.replace(/\s+/g, '')}" 
+           class="flex items-center gap-3.5 p-1.5 rounded-xl transition-colors hover:bg-[var(--icon-bg)] group">
+          <div class="info-icon-box group-hover:border-[var(--accent-amber)] transition-colors">
+            <i data-lucide="phone" class="w-4 h-4"></i>
+          </div>
+          <div>
+            <div class="text-[10px] font-bold tracking-wider uppercase text-[var(--text-muted)]">Phone</div>
+            <div class="text-sm font-medium text-[var(--text-primary)] group-hover:text-[var(--accent-amber)] transition-colors">${p.phone}</div>
+          </div>
+        </a>
+      </div>
+
+      <!-- Subtle Gradient Divider -->
+      <div class="divider-gradient"></div>
+
+      <!-- Social Links Row -->
+      <div class="flex items-center lg:justify-center gap-4 px-2">
+        ${p.socials.map(s => `
+          <a href="${s.url}" target="_blank" rel="noopener noreferrer" class="social-btn text-[var(--text-secondary)] hover:text-[var(--accent-amber)]" title="${s.name}" aria-label="${s.name}">
+            ${SVG_ICONS[s.icon] || '<i data-lucide="globe" class="w-4 h-4"></i>'}
+          </a>
+        `).join('')}
+      </div>
     </div>
   `;
+
+  // Attach mobile toggle event
+  const toggleBtn = document.getElementById("profile-toggle-btn");
+  const sidebar = document.getElementById("sidebar");
+  if (toggleBtn && sidebar) {
+    toggleBtn.addEventListener("click", () => {
+      const isExpanded = sidebar.classList.toggle("expanded");
+      toggleBtn.setAttribute("aria-expanded", isExpanded ? "true" : "false");
+    });
+  }
 }
 
 /**
- * Render Hero Section
+ * Render Hero Section (Matching High-Impact Typography & Full-Width Glass CV Button)
  */
 function renderHero() {
   const p = portfolioData.personal;
@@ -167,23 +202,23 @@ function renderHero() {
   if (!container) return;
 
   container.innerHTML = `
-    <div class="space-y-6 pt-2 sm:pt-4">
-      <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.25]">
-        <span class="hero-title-main block">${p.hero.headingPart1}</span>
-        <span class="text-highlight block pb-1">${p.hero.headingHighlight}</span>
+    <div class="space-y-6 pt-1 sm:pt-2">
+      <h1 class="hero-headline text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-[var(--text-primary)]">
+        <span class="block">${p.hero.headingPart1}</span>
+        <span class="hero-highlight block pb-1">${p.hero.headingHighlight}</span>
       </h1>
 
-      <p class="text-base sm:text-lg text-[var(--text-secondary)] leading-relaxed max-w-2xl">
+      <p class="text-sm sm:text-base lg:text-lg text-[var(--text-secondary)] leading-relaxed max-w-2xl">
         ${p.hero.bio}
       </p>
 
-      <div class="pt-2 flex flex-wrap items-center gap-4">
-        <button id="btn-view-cv" class="btn-glass px-6 py-2.5 inline-flex items-center gap-2 text-sm font-medium shadow-sm">
+      <div class="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5">
+        <button id="btn-view-cv" class="btn-cv-mobile w-full sm:w-auto px-7 py-3.5 inline-flex items-center justify-center gap-2 text-sm font-semibold shadow-sm">
           <span>View CV</span>
           <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
         </button>
 
-        <a href="#contact" class="px-5 py-2.5 rounded-full text-sm font-medium text-[var(--text-secondary)] hover:text-[var(--accent-amber)] transition-colors inline-flex items-center gap-1.5">
+        <a href="#contact" class="px-5 py-3 rounded-full text-sm font-medium text-[var(--text-secondary)] hover:text-[var(--accent-amber)] transition-colors inline-flex items-center justify-center gap-1.5">
           <span>Get in Touch</span>
           <i data-lucide="chevron-down" class="w-4 h-4"></i>
         </a>
@@ -488,12 +523,13 @@ window.openCvModal = function() {
  * Smooth Scroll & Active Nav Spy
  */
 function initNavigation() {
-  const navLinks = document.querySelectorAll(".nav-link");
+  const desktopLinks = document.querySelectorAll(".nav-link");
+  const mobileLinks = document.querySelectorAll(".mobile-nav-link");
   const sections = document.querySelectorAll("section[id]");
 
-  window.addEventListener("scroll", () => {
+  function handleScrollSpy() {
     let current = "";
-    const scrollPos = window.scrollY + 200;
+    const scrollPos = window.scrollY + 220;
 
     sections.forEach(section => {
       const top = section.offsetTop;
@@ -503,11 +539,25 @@ function initNavigation() {
       }
     });
 
-    navLinks.forEach(link => {
+    if (!current && window.scrollY < 120) {
+      current = "home";
+    }
+
+    desktopLinks.forEach(link => {
       link.classList.remove("active");
       if (link.getAttribute("href") === `#${current}`) {
         link.classList.add("active");
       }
     });
-  });
+
+    mobileLinks.forEach(link => {
+      link.classList.remove("active");
+      if (link.getAttribute("href") === `#${current}`) {
+        link.classList.add("active");
+      }
+    });
+  }
+
+  window.addEventListener("scroll", handleScrollSpy, { passive: true });
+  handleScrollSpy();
 }
