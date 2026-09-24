@@ -19,8 +19,8 @@ const portfolioData = {
       { name: "Instagram", icon: "instagram", url: "https://www.instagram.com/musfir_ig26/" }
     ],
     hero: {
-      headingPart1: "Building intelligent systems in",
-      headingHighlight: "AI & Data Science.",
+      headingPart1: "AI & Data Science",
+      headingHighlight: "Undergraduate",
       bio: "I'm Ashabul Yeamin Musfir, an AI & Data Science undergraduate. Eager to leverage academic knowledge and hands-on project experience to contribute to real-world challenges."
     }
   },
