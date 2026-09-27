@@ -98,8 +98,8 @@
           </nav>
         </header>
 
-        <!-- Main Card Container (Direct inspiration from reference mockup) -->
-        <div class="main-card-container p-6 sm:p-8 lg:p-9 space-y-12 sm:space-y-14">
+        <!-- Main Card Container (Liquid Glass Bento Container) -->
+        <div class="main-card-container p-6 sm:p-8 lg:p-9 space-y-10 sm:space-y-12">
 
           <!-- Hero Section -->
           <section id="home" class="scroll-mt-6 lg:scroll-mt-24">
@@ -107,6 +107,9 @@
               <!-- Populated dynamically by app.js -->
             </div>
           </section>
+
+          <!-- Fading Line Separator -->
+          <div class="section-divider" role="separator"></div>
 
           <!-- Skills & Technologies Section -->
           <section id="skills" class="scroll-mt-6 lg:scroll-mt-24">
@@ -123,6 +126,9 @@
             </div>
           </section>
 
+          <!-- Fading Line Separator -->
+          <div class="section-divider" role="separator"></div>
+
           <!-- Education Section -->
           <section id="education" class="scroll-mt-6 lg:scroll-mt-24">
             <div class="flex items-center gap-3 mb-6">
@@ -135,6 +141,9 @@
               <!-- Populated dynamically by app.js -->
             </div>
           </section>
+
+          <!-- Fading Line Separator -->
+          <div class="section-divider" role="separator"></div>
 
           <!-- Awards And Recognition Section -->
           <section id="awards" class="scroll-mt-6 lg:scroll-mt-24">
@@ -151,6 +160,9 @@
             </div>
           </section>
 
+          <!-- Fading Line Separator -->
+          <div class="section-divider" role="separator"></div>
+
           <!-- Certifications Section -->
           <section id="certifications" class="scroll-mt-6 lg:scroll-mt-24">
             <div class="flex items-center gap-3 mb-6">
@@ -164,6 +176,9 @@
             </div>
           </section>
 
+          <!-- Fading Line Separator -->
+          <div class="section-divider" role="separator"></div>
+
           <!-- Contact Section -->
           <section id="contact" class="scroll-mt-6 lg:scroll-mt-24">
             <div id="contact-content">
@@ -171,9 +186,12 @@
             </div>
           </section>
 
+          <!-- Fading Line Separator -->
+          <div class="section-divider" role="separator"></div>
+
           <!-- Footer -->
           <footer
-            class="pt-8 border-t border-[var(--border-card)] flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[var(--text-muted)]">
+            class="pt-2 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[var(--text-muted)]">
             <p>© 2026 Ashabul Yeamin Musfir. All rights reserved.</p>
             <div class="flex items-center gap-4">
               <a href="#home" class="hover:text-[var(--accent-amber)] transition-colors">Back to top ↑</a>
@@ -187,21 +205,35 @@
   </div>
 
   <!-- ============================================== -->
-  <!-- MOBILE BOTTOM FLOATING NAVIGATION BAR         -->
-  <!-- Directly inspired by reference screenshot      -->
+  <!-- IPHONE LIQUID GLASS BOTTOM NAVIGATION DOCK     -->
   <!-- ============================================== -->
   <nav id="mobile-nav-bar" class="mobile-bottom-nav flex lg:hidden" aria-label="Mobile Navigation">
     <div class="mobile-nav-links">
-      <a href="#home" class="mobile-nav-link active">Home</a>
-      <a href="#skills" class="mobile-nav-link">Skills</a>
-      <a href="#education" class="mobile-nav-link">Education</a>
-      <a href="#contact" class="mobile-nav-link">Contact</a>
+      <a href="#home" class="mobile-nav-link active" title="Home">
+        <i data-lucide="home" class="mobile-nav-icon"></i>
+        <span class="mobile-nav-text">Home</span>
+      </a>
+      <a href="#skills" class="mobile-nav-link" title="Skills">
+        <i data-lucide="code" class="mobile-nav-icon"></i>
+        <span class="mobile-nav-text">Skills</span>
+      </a>
+      <a href="#education" class="mobile-nav-link" title="Education">
+        <i data-lucide="graduation-cap" class="mobile-nav-icon"></i>
+        <span class="mobile-nav-text">Education</span>
+      </a>
+      <a href="#contact" class="mobile-nav-link" title="Contact">
+        <i data-lucide="mail" class="mobile-nav-icon"></i>
+        <span class="mobile-nav-text">Contact</span>
+      </a>
     </div>
+
+    <!-- Liquid Glass Vertical Separator -->
+    <div class="mobile-nav-divider" aria-hidden="true"></div>
 
     <!-- Mobile Theme Toggle Button -->
     <button id="mobile-theme-toggle" class="mobile-theme-btn" title="Toggle Theme" aria-label="Toggle Light / Dark Mode">
       <div id="mobile-theme-icon-container">
-        <i data-lucide="moon" class="w-5 h-5 text-amber-400"></i>
+        <i data-lucide="moon" class="w-4 h-4 text-amber-400"></i>
       </div>
     </button>
   </nav>
