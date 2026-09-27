@@ -124,8 +124,8 @@ function renderSidebar() {
 
     <!-- Collapsible Details Section (Expandable on Mobile, Always Open on Desktop) -->
     <div id="profile-collapsible" class="profile-collapsible">
-      <!-- Top Fading Divider -->
-      <div class="divider-gradient"></div>
+      <!-- Top Divider -->
+      <div class="my-5 border-t border-[var(--border-card)]"></div>
 
       <!-- Contact Info List with Squircle Icon Containers -->
       <div class="space-y-3 text-left">
@@ -550,14 +550,9 @@ function initNavigation() {
       }
     });
 
-    let mobileTarget = current;
-    if (current === "awards" || current === "certifications") {
-      mobileTarget = "education";
-    }
-
     mobileLinks.forEach(link => {
       link.classList.remove("active");
-      if (link.getAttribute("href") === `#${mobileTarget}`) {
+      if (link.getAttribute("href") === `#${current}`) {
         link.classList.add("active");
       }
     });
