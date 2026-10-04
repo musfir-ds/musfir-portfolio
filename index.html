@@ -1,226 +1,423 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en">
 
 <head>
   <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Ashabul Yeamin Musfir | AI & Data Science Undergraduate</title>
+  <title>Ashabul Yeamin Musfir | AI &amp; Data Science Undergraduate</title>
 
-  <!-- SEO & OpenGraph Metadata -->
-  <meta name="description" content="Portfolio of Ashabul Yeamin Musfir - AI & Data Science Undergraduate." />
-  <meta name="keywords" content="Ashabul Yeamin Musfir, AI, Data Science, Machine Learning, Python, Undergraduate" />
-  <meta name="author" content="Ashabul Yeamin Musfir" />
-  <meta property="og:title" content="Ashabul Yeamin Musfir | AI & Data Science Undergraduate" />
-  <meta property="og:description" content="AI & Data Science Undergraduate." />
+  <!-- OpenGraph & Meta SEO Tags -->
+  <meta property="og:title" content="Ashabul Yeamin Musfir's Portfolio" />
+  <meta property="og:description"
+    content="Ashabul Yeamin Musfir's personal portfolio website showcasing AI & Data Science skills, education, and contact information." />
+  <meta property="og:image" content="./assets/images/profile.png" />
   <meta property="og:type" content="website" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Ashabul Yeamin Musfir's Portfolio" />
+  <meta name="twitter:description"
+    content="Ashabul Yeamin Musfir's personal portfolio website showcasing AI & Data Science skills, education, and contact information." />
+  <meta name="twitter:image" content="./assets/images/profile.png" />
+
+  <meta name="description"
+    content="Ashabul Yeamin Musfir's personal portfolio website showcasing AI & Data Science skills, education, and contact information." />
+  <meta name="author" content="Ashabul Yeamin Musfir" />
 
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml"
     href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚀</text></svg>" />
 
-  <!-- Google Fonts: Plus Jakarta Sans -->
+  <!-- Google Fonts: Poppins (Matching reference typography) -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
     rel="stylesheet" />
 
-  <!-- Tailwind CSS via CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      darkMode: ['class', '[data-theme="dark"]'],
-      theme: {
-        extend: {
-          fontFamily: {
-            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
-          },
-          colors: {
-            amberAccent: '#f5b742',
-          }
-        }
-      }
-    }
-  </script>
-
-  <!-- Lucide Icons -->
-  <script src="https://unpkg.com/lucide@latest"></script>
-
-  <!-- Custom Stylesheet -->
+  <!-- Custom Stylesheet (Directly modeled on monmoy.pages.dev) -->
   <link rel="stylesheet" href="./assets/css/styles.css" />
 </head>
 
-<body class="relative min-h-screen text-[var(--text-primary)]">
+<body>
 
-  <!-- Ambient Atmospheric Glow -->
-  <div class="ambient-glow"></div>
+  <!-- Ambient Animated Atmospheric Glow & Grid Background -->
+  <div class="site-bg">
+    <div class="grid-glow"></div>
+    <div class="orb orb-a"></div>
+    <div class="orb orb-b"></div>
+    <div class="orb orb-c"></div>
+  </div>
 
-  <!-- Main Responsive Container -->
-  <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-6 lg:py-10 pb-28 lg:pb-10">
+  <!-- Main Container -->
+  <main>
 
-    <div class="flex flex-col lg:flex-row gap-6 lg:gap-10 items-start">
+    <!-- ============================================== -->
+    <!-- LEFT SIDEBAR: Profile Card & Contacts         -->
+    <!-- ============================================== -->
+    <aside class="sidebar" data-sidebar>
+      <div class="sidebar-info">
+        <!-- Avatar Box with Zoom Modal Trigger -->
+        <figure class="avatar-box" id="avatar-box-trigger" title="Click to view full photo">
+          <img src="./assets/images/profile.png" alt="Ashabul Yeamin Musfir" width="80" />
+        </figure>
 
-      <!-- ============================================== -->
-      <!-- LEFT COLUMN: Sticky Profile Sidebar Card      -->
-      <!-- ============================================== -->
-      <aside class="w-full lg:w-80 xl:w-[330px] flex-shrink-0 sticky-sidebar">
-        <div id="sidebar" class="sidebar-container p-5 sm:p-6 lg:p-7 relative">
-          <div id="sidebar-content">
-            <!-- Populated dynamically by app.js -->
-          </div>
+        <!-- Name & Badge -->
+        <div class="info-content" id="sidebar-info-content">
+          <h1 class="name" title="Ashabul Yeamin Musfir">Ashabul Yeamin Musfir</h1>
+          <p class="title">Aspiring AI Engineer</p>
         </div>
-      </aside>
+
+        <!-- Mobile Show Contacts Toggle Button -->
+        <button type="button" class="info_more-btn" data-sidebar-btn aria-label="Show contacts">
+          <span>Show Contacts</span>
+          <ion-icon name="chevron-down"></ion-icon>
+        </button>
+      </div>
+
+      <div class="sidebar-info_more">
+        <div class="sidebar-info_more-inner">
+          <div class="separator"></div>
+
+          <!-- Contacts List -->
+          <ul class="contacts-list" id="sidebar-contacts-list">
+            <!-- Populated dynamically by app.js -->
+          </ul>
+
+          <div class="separator"></div>
+
+          <!-- Social Links List -->
+          <ul class="social-list" id="sidebar-social-list">
+            <!-- Populated dynamically by app.js -->
+          </ul>
+        </div>
+      </div>
+    </aside>
+
+    <!-- ============================================== -->
+    <!-- RIGHT MAIN CONTENT: Navigation & Articles      -->
+    <!-- ============================================== -->
+    <div class="main-content">
+
+      <!-- Floating Glass Navbar (Top-right on Desktop, Bottom on Mobile) -->
+      <nav class="navbar">
+        <ul class="navbar-list">
+          <li class="navbar-item">
+            <button type="button" class="navbar-link active" data-nav-link="home">Home</button>
+          </li>
+          <li class="navbar-item">
+            <button type="button" class="navbar-link" data-nav-link="resume">Resume</button>
+          </li>
+        </ul>
+
+        <!-- Dark / Light Theme Toggle with Moon and Sun icons -->
+        <div class="navbar-theme-wrapper">
+          <button type="button" id="theme-toggle" class="navbar-link" aria-label="Toggle light/dark mode"
+            title="Toggle Light/Dark Theme">
+            <!-- Moon SVG (Dark Mode Icon) -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
+              <path
+                d="M480-120q-150 0-255-105T120-480q0-150 105-255t255-105q14 0 27.5 1t26.5 3q-41 29-65.5 75.5T444-660q0 90 63 153t153 63q55 0 101-24.5t75-65.5q2 13 3 26.5t1 27.5q0 150-105 255T480-120Z" />
+            </svg>
+            <!-- Sun SVG (Light Mode Icon) -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor">
+              <path
+                d="M480-280q-83 0-141.5-58.5T280-480q0-83 58.5-141.5T480-680q83 0 141.5 58.5T680-480q0 83-58.5 141.5T480-280ZM200-440H40v-80h160v80Zm720 0H760v-80h160v80ZM440-760v-160h80v160h-80Zm0 720v-160h80v160h-80ZM256-650l-101-97 57-59 96 100-52 56Zm492 496-97-101 53-55 101 97-57 59Zm-98-550 97-101 59 57-100 96-56-52ZM154-212l101-97 55 53-97 101-59-57Z" />
+            </svg>
+          </button>
+        </div>
+      </nav>
 
       <!-- ============================================== -->
-      <!-- RIGHT COLUMN: Scrollable Main Content Stream  -->
+      <!-- ARTICLE 1: HOME PAGE                          -->
       <!-- ============================================== -->
-      <main class="flex-1 w-full min-w-0 space-y-6 sm:space-y-8">
+      <article class="home active" data-page="home">
 
-        <!-- Top Floating Navigation Bar (Desktop Only) -->
-        <header class="hidden lg:flex justify-end items-center sticky top-4 z-40">
-          <nav class="nav-pill px-5 py-2.5 rounded-full flex items-center gap-5 sm:gap-6 shadow-lg">
-            <a href="#home" class="nav-link active">Home</a>
-            <a href="#skills" class="nav-link">Skills</a>
-            <a href="#education" class="nav-link">Education</a>
-            <a href="#awards" class="nav-link">Awards</a>
-            <a href="#certifications" class="nav-link">Certifications</a>
-            <a href="#contact" class="nav-link text-[var(--accent-amber)] font-semibold">Contact</a>
+        <!-- Hero Section -->
+        <section class="hero-section">
+          <div class="hero-copy" id="hero-copy-container">
+            <h1 class="hero-title">
+              AI &amp; Data Science <em>Undergraduate</em>
+            </h1>
+            <div class="hero-text">
+              <p>I’m Ashabul Yeamin Musfir, an AI &amp; Data Science undergraduate at Green University of Bangladesh. Focused on building real-world machine learning solutions, predictive models, deep learning pipelines, and data-driven intelligent systems.</p>
+            </div>
+            <div class="hero-actions">
+              <button type="button" class="btn btn-secondary btn-shiny" data-open-cv>
+                <span class="shiny-text">
+                  <span>View CV</span>
+                  <span class="btn-arrow">&#x2197;</span>
+                </span>
+              </button>
+            </div>
+          </div>
+        </section>
 
-            <div class="h-4 w-[1px] bg-[var(--border-card)]"></div>
+        <div class="separator hero-separator"></div>
 
-            <!-- Theme Toggle Button (Desktop) -->
-            <button id="theme-toggle"
-              class="w-7 h-7 rounded-full flex items-center justify-center transition-transform hover:scale-110 focus:outline-none"
-              title="Toggle Theme" aria-label="Toggle Light / Dark Mode">
-              <div id="theme-icon-container">
-                <i data-lucide="moon" class="w-4 h-4 text-amber-400"></i>
-              </div>
-            </button>
-          </nav>
+        <!-- Education Section -->
+        <section class="timeline">
+          <div class="title-wrapper">
+            <div class="icon-box">
+              <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 512 512" height="1em"
+                width="1em" xmlns="http://www.w3.org/2000/svg">
+                <path d="M464 128L256 32 48 128l208 96 208-96zM96 208v144l160 80 160-80V208l-160 80-160-80z"></path>
+              </svg>
+            </div>
+            <h3 class="h3">Education</h3>
+          </div>
+          <ol class="timeline-list" id="education-timeline-list">
+            <!-- Populated dynamically by app.js -->
+          </ol>
+        </section>
+
+
+
+        <div class="separator"></div>
+
+        <!-- Skills & Technologies Section -->
+        <section class="timeline skills-section">
+          <div class="title-wrapper">
+            <div class="icon-box">
+              <svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round"
+                stroke-linejoin="round" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
+                <polyline points="16 18 22 12 16 6"></polyline>
+                <polyline points="8 6 2 12 8 18"></polyline>
+              </svg>
+            </div>
+            <h3 class="h3">Skills &amp; Technologies</h3>
+          </div>
+          <div class="skills-grid" id="skills-grid">
+            <div class="skill-card">
+              <h4 class="skill-card-title">Programming</h4>
+              <ul class="skill-tag-list">
+                <li class="skill-tag-pill">Python</li>
+                <li class="skill-tag-pill">HTML</li>
+                <li class="skill-tag-pill">CSS</li>
+              </ul>
+            </div>
+            <div class="skill-card">
+              <h4 class="skill-card-title">UI/UX</h4>
+              <ul class="skill-tag-list">
+                <li class="skill-tag-pill">Figma</li>
+                <li class="skill-tag-pill">Canva</li>
+              </ul>
+            </div>
+            <div class="skill-card">
+              <h4 class="skill-card-title">Additional</h4>
+              <ul class="skill-tag-list">
+                <li class="skill-tag-pill">Anchoring</li>
+                <li class="skill-tag-pill">Teaching</li>
+                <li class="skill-tag-pill">Office Applications</li>
+                <li class="skill-tag-pill">LATEX</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <div class="separator"></div>
+
+        <!-- Awards and Recognition Section -->
+        <section class="timeline">
+          <div class="title-wrapper">
+            <div class="icon-box">
+              <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 256 256" height="1em"
+                width="1em" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M224 48H192V40a16 16 0 0 0-16-16H80a16 16 0 0 0-16 16v8H32a16 16 0 0 0-16 16v40a56.06 56.06 0 0 0 52 55.82A88.16 88.16 0 0 0 120 183.18V208H96a8 8 0 0 0 0 16h64a8 8 0 0 0 0-16h-24v-24.82a88.16 88.16 0 0 0 52-27.36A56.06 56.06 0 0 0 240 104V64a16 16 0 0 0-16-16ZM32 64h32v40a40 40 0 0 1-32-40Zm144 96a72 72 0 0 1-96 0V40h96Zm48-56a40 40 0 0 1-32 40V64h32Z">
+                </path>
+              </svg>
+            </div>
+            <h3 class="h3">Awards and Recognition</h3>
+          </div>
+          <ol class="timeline-list" id="awards-timeline-list">
+            <!-- Populated dynamically by app.js -->
+          </ol>
+        </section>
+
+        <div class="separator"></div>
+
+        <!-- Certifications Section -->
+        <section class="timeline">
+          <div class="title-wrapper">
+            <div class="icon-box">
+              <svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round"
+                stroke-linejoin="round" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="12" cy="8" r="7"></circle>
+                <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline>
+              </svg>
+            </div>
+            <h3 class="h3">Certifications</h3>
+          </div>
+          <ol class="timeline-list" id="certifications-timeline-list">
+            <!-- Populated dynamically by app.js -->
+          </ol>
+        </section>
+
+        <div class="separator"></div>
+
+        <!-- Contact Banner Card Section -->
+        <section class="contact-banner-section" id="contact-banner-container">
+          <!-- Populated dynamically by app.js -->
+        </section>
+
+      </article>
+
+
+
+      <!-- ============================================== -->
+      <!-- ARTICLE 3: RESUME PAGE                        -->
+      <!-- ============================================== -->
+      <article class="resume" data-page="resume">
+        <header>
+          <h2 class="h2 article-title">Resume</h2>
         </header>
 
-        <!-- Main Card Container (Direct inspiration from reference mockup) -->
-        <div class="main-card-container p-6 sm:p-8 lg:p-9 space-y-12 sm:space-y-14">
-
-          <!-- Hero Section -->
-          <section id="home" class="scroll-mt-6 lg:scroll-mt-24">
-            <div id="hero-content">
-              <!-- Populated dynamically by app.js -->
-            </div>
-          </section>
-
-          <!-- Skills & Technologies Section -->
-          <section id="skills" class="scroll-mt-6 lg:scroll-mt-24">
-            <div class="flex items-center gap-3 mb-6">
-              <div class="section-header-icon">
-                <i data-lucide="code" class="w-4 h-4"></i>
-              </div>
-              <h2 class="text-xl sm:text-2xl lg:text-3xl font-bold tracking-tight text-[var(--text-primary)]">
-                Skills & Technologies
-              </h2>
-            </div>
-            <div id="skills-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-              <!-- Populated dynamically by app.js -->
-            </div>
-          </section>
-
-          <!-- Education Section -->
-          <section id="education" class="scroll-mt-6 lg:scroll-mt-24">
-            <div class="flex items-center gap-3 mb-6">
-              <div class="section-header-icon">
-                <i data-lucide="graduation-cap" class="w-4 h-4"></i>
-              </div>
-              <h2 class="text-xl sm:text-2xl lg:text-3xl font-bold tracking-tight text-[var(--text-primary)]">Education</h2>
-            </div>
-            <div id="education-content">
-              <!-- Populated dynamically by app.js -->
-            </div>
-          </section>
-
-          <!-- Awards And Recognition Section -->
-          <section id="awards" class="scroll-mt-6 lg:scroll-mt-24">
-            <div class="flex items-center gap-3 mb-6">
-              <div class="section-header-icon">
-                <i data-lucide="trophy" class="w-4 h-4"></i>
-              </div>
-              <h2 class="text-xl sm:text-2xl lg:text-3xl font-bold tracking-tight text-[var(--text-primary)]">
-                Awards And Recognition
-              </h2>
-            </div>
-            <div id="awards-list" class="space-y-4">
-              <!-- Populated dynamically by app.js -->
-            </div>
-          </section>
-
-          <!-- Certifications Section -->
-          <section id="certifications" class="scroll-mt-6 lg:scroll-mt-24">
-            <div class="flex items-center gap-3 mb-6">
-              <div class="section-header-icon">
-                <i data-lucide="award" class="w-4 h-4"></i>
-              </div>
-              <h2 class="text-xl sm:text-2xl lg:text-3xl font-bold tracking-tight text-[var(--text-primary)]">Certifications</h2>
-            </div>
-            <div id="certifications-list" class="space-y-4">
-              <!-- Populated dynamically by app.js -->
-            </div>
-          </section>
-
-          <!-- Contact Section -->
-          <section id="contact" class="scroll-mt-6 lg:scroll-mt-24">
-            <div id="contact-content">
-              <!-- Populated dynamically by app.js -->
-            </div>
-          </section>
-
-          <!-- Footer -->
-          <footer
-            class="pt-8 border-t border-[var(--border-card)] flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[var(--text-muted)]">
-            <p>© 2026 Ashabul Yeamin Musfir. All rights reserved.</p>
-            <div class="flex items-center gap-4">
-              <a href="#home" class="hover:text-[var(--accent-amber)] transition-colors">Back to top ↑</a>
-            </div>
-          </footer>
-
+        <div class="shine-btn-wrapper">
+          <button type="button" class="btn-shine" data-open-cv>
+            Download Musfir's Full CV
+          </button>
         </div>
 
-      </main>
+        <!-- Academic Background Section -->
+        <section class="timeline">
+          <div class="title-wrapper">
+            <div class="icon-box">
+              <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 512 512" height="1em"
+                width="1em" xmlns="http://www.w3.org/2000/svg">
+                <path d="M464 128L256 32 48 128l208 96 208-96zM96 208v144l160 80 160-80V208l-160 80-160-80z"></path>
+              </svg>
+            </div>
+            <h3 class="h3">Education</h3>
+          </div>
+          <ol class="timeline-list">
+            <li class="timeline-item">
+              <div class="timeline-date">Oct 2025 – Present</div>
+              <h4 class="h4 timeline-item-title">Bachelor of Science in Artificial Intelligence and Data Science</h4>
+              <p class="timeline-item-p"><span>Green University of Bangladesh</span></p>
+              <ul class="timeline-text">
+                <li>CGPA: 3.6 / 4.00</li>
+                <li>Fundamental Courses: Artificial Intelligence, Machine Learning, Big Data Analytics, Deep Learning,
+                  Natural Language Processing (NLP), Cloud &amp; Data Center, Ethics and Responsible AI.</li>
+                <li>Additional Courses: Engineering Economics, Engineering Drawing.</li>
+              </ul>
+            </li>
+          </ol>
+        </section>
+
+        <div class="separator"></div>
+
+        <!-- Skills Overview in Resume -->
+        <section class="timeline skills-section">
+          <div class="title-wrapper">
+            <div class="icon-box">
+              <svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round"
+                stroke-linejoin="round" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
+                <polyline points="16 18 22 12 16 6"></polyline>
+                <polyline points="8 6 2 12 8 18"></polyline>
+              </svg>
+            </div>
+            <h3 class="h3">Skills &amp; Technologies</h3>
+          </div>
+          <div class="skills-grid" id="resume-skills-grid">
+            <div class="skill-card">
+              <h4 class="skill-card-title">Programming</h4>
+              <ul class="skill-tag-list">
+                <li class="skill-tag-pill">Python</li>
+                <li class="skill-tag-pill">HTML</li>
+                <li class="skill-tag-pill">CSS</li>
+              </ul>
+            </div>
+            <div class="skill-card">
+              <h4 class="skill-card-title">UI/UX</h4>
+              <ul class="skill-tag-list">
+                <li class="skill-tag-pill">Figma</li>
+                <li class="skill-tag-pill">Canva</li>
+              </ul>
+            </div>
+            <div class="skill-card">
+              <h4 class="skill-card-title">Additional</h4>
+              <ul class="skill-tag-list">
+                <li class="skill-tag-pill">Anchoring</li>
+                <li class="skill-tag-pill">Teaching</li>
+                <li class="skill-tag-pill">Office Applications</li>
+                <li class="skill-tag-pill">LATEX</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <div class="separator"></div>
+
+        <!-- Certifications in Resume -->
+        <section class="timeline">
+          <div class="title-wrapper">
+            <div class="icon-box">
+              <svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round"
+                stroke-linejoin="round" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="12" cy="8" r="7"></circle>
+                <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline>
+              </svg>
+            </div>
+            <h3 class="h3">Certifications</h3>
+          </div>
+          <ol class="timeline-list">
+            <li class="timeline-item timeline-cert-item">
+              <a href="https://intellipaat.com/academy/certificate-link/?Yz0xNTQzJnU9MzIyNTM5JmV4dD0x" target="_blank"
+                rel="noreferrer" class="timeline-cert-link">
+                <div class="timeline-date">Certified</div>
+                <h4 class="h4 timeline-item-title">Python Programming Language Course</h4>
+                <p class="timeline-item-p timeline-cert-issuer">
+                  <span>IntelliPaat Academy - Instructor: Mrs. Shilpi Jain</span>
+                  <svg class="timeline-item-icon" width="18px" height="18px" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="7" y1="17" x2="17" y2="7"></line>
+                    <polyline points="7 7 17 7 17 17"></polyline>
+                  </svg>
+                </p>
+              </a>
+            </li>
+          </ol>
+        </section>
+      </article>
+
     </div>
+  </main>
+
+  <!-- ============================================== -->
+  <!-- MODAL 1: Profile Photo Zoom Modal             -->
+  <!-- ============================================== -->
+  <div id="avatar-modal" class="modal-container" role="dialog" aria-modal="true" aria-label="Profile Photo Viewer">
+    <div class="overlay" data-close-modal></div>
+    <section class="profile-modal">
+      <button type="button" class="modal-close-btn" data-close-modal aria-label="Close modal">
+        <ion-icon name="close-outline"></ion-icon>
+      </button>
+      <div class="modal-img-wrapper">
+        <figure class="modal-avatar-box">
+          <img src="./assets/images/profile.png" alt="Ashabul Yeamin Musfir" />
+        </figure>
+      </div>
+    </section>
   </div>
 
   <!-- ============================================== -->
-  <!-- MOBILE BOTTOM FLOATING NAVIGATION BAR         -->
-  <!-- Directly inspired by reference screenshot      -->
+  <!-- MODAL 2: Curriculum Vitae (CV) Viewer Modal   -->
   <!-- ============================================== -->
-  <nav id="mobile-nav-bar" class="mobile-bottom-nav flex lg:hidden" aria-label="Mobile Navigation">
-    <div class="mobile-nav-links">
-      <a href="#home" class="mobile-nav-link active">Home</a>
-      <a href="#skills" class="mobile-nav-link">Skills</a>
-      <a href="#education" class="mobile-nav-link">Education</a>
-      <a href="#contact" class="mobile-nav-link">Contact</a>
-    </div>
-
-    <!-- Mobile Theme Toggle Button -->
-    <button id="mobile-theme-toggle" class="mobile-theme-btn" title="Toggle Theme" aria-label="Toggle Light / Dark Mode">
-      <div id="mobile-theme-icon-container">
-        <i data-lucide="moon" class="w-5 h-5 text-amber-400"></i>
-      </div>
-    </button>
-  </nav>
-
-  <!-- ============================================== -->
-  <!-- MODAL: Curriculum Vitae (CV) Viewer           -->
-  <!-- ============================================== -->
-  <div id="cv-modal" class="modal-overlay" role="dialog" aria-modal="true">
-    <div class="modal-content relative max-w-3xl">
-      <button data-close-modal
-        class="absolute top-4 right-4 w-9 h-9 rounded-full bg-[var(--icon-bg)] border border-[var(--border-card)] flex items-center justify-center text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:border-[var(--accent-amber)] transition-colors z-20"
-        aria-label="Close modal">
-        <i data-lucide="x" class="w-4 h-4"></i>
+  <div id="cv-modal" class="modal-container" role="dialog" aria-modal="true" aria-label="Curriculum Vitae Viewer">
+    <div class="overlay" data-close-modal></div>
+    <section class="cv-modal-box">
+      <button type="button" class="modal-close-btn" data-close-modal aria-label="Close modal">
+        <ion-icon name="close-outline"></ion-icon>
       </button>
       <div id="cv-modal-body">
-        <!-- Populated dynamically -->
+        <!-- Populated dynamically by app.js -->
       </div>
-    </div>
+    </section>
   </div>
+
+  <!-- IonIcons web components (Matching monmoy.pages.dev) -->
+  <script type="module" src="https://cdn.jsdelivr.net/npm/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://cdn.jsdelivr.net/npm/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 
   <!-- Application Scripts -->
   <script src="./assets/js/data.js"></script>
